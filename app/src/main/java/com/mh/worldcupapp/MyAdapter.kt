@@ -30,7 +30,7 @@ class MyAdapter(private var activity: Activity, private var items: ArrayList<Cou
 
         if (convertView == null){
 
-            val inflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflater.inflate(R.layout.list_item, null)
             viewHolder = ViewHolder(view)
             view?.tag = viewHolder
@@ -39,7 +39,7 @@ class MyAdapter(private var activity: Activity, private var items: ArrayList<Cou
             viewHolder = view.tag as ViewHolder
         }
 
-        var countries = items[position]
+        val countries = items[position]
         viewHolder.txtCountry?.text = countries.name
         viewHolder.txtCupWins?.text = countries.cupWins
         viewHolder.flagImg?.setImageResource(countries.flagImage)
