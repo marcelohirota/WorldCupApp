@@ -10,23 +10,36 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var listView = findViewById<ListView>(R.id.listView)
+        var listView: ListView = findViewById(R.id.listView)
 
-        val worldCupList = arrayOf(
-            "Germany",
-            "Brazil",
-            "England",
-            "Spain",
-            "Qatar"
-        )
+        var adapter = MyAdapter(this, generateData())
 
-        val arrayAdapter: ArrayAdapter<*> = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            worldCupList
-        )
+        listView?.adapter = adapter
+        adapter?.notifyDataSetChanged()
 
-        listView.adapter = arrayAdapter
 
+    }
+
+    // Data Source
+    fun generateData(): ArrayList<CountryModel>{
+        var contriesList = ArrayList<CountryModel>()
+
+        var country1 = CountryModel("Brazil", "5", R.drawable.brazil)
+        var country2 = CountryModel("France", "2", R.drawable.france)
+        var country3 = CountryModel("Germany", "4", R.drawable.germany)
+        var country4 = CountryModel("Saudi Arabia", "0", R.drawable.saudiarabia)
+        var country5 = CountryModel("Spain", "1", R.drawable.spain)
+        var country6 = CountryModel("England", "1", R.drawable.unitedkingdom)
+        var country7 = CountryModel("United States", "0", R.drawable.unitedstates)
+
+        contriesList.add(country1)
+        contriesList.add(country2)
+        contriesList.add(country3)
+        contriesList.add(country4)
+        contriesList.add(country5)
+        contriesList.add(country6)
+        contriesList.add(country7)
+
+        return contriesList
     }
 }
